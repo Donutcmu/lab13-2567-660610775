@@ -1,9 +1,10 @@
 "use client";
 import { movieDB } from "@lib/movieDB";
 import MovieRow from "@components/MovieRow";
+import {movieIdPageParams} from "@lib/types"
 
-export default function SearchResultPage({params}) {
-  const searchInput = String(params);
+export default function SearchResultPage({params}:movieIdPageParams) {
+  const searchInput = String(params.id);
   
   //tip1 : before filtering movie, replace all "%20" with " " (space) in the input
   // const processedSearchInput = ...
@@ -21,6 +22,10 @@ export default function SearchResultPage({params}) {
  const filteredMovies = movieDB.filter((movie)=>
     movie.title.toLocaleLowerCase().includes(processedSearchInput.toLocaleLowerCase())
 )
+const selectedMovie = movieDB.find((movie)=>movie.id===id)
+    if(!selectedMovie){
+        return <p className='text-center'>Movie is not found</p>
+    }
 
   return (
     <div>
