@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { movieDB } from "@lib/movieDB";
+import MovieRow from "@components/MovieRow";
 
 export default function SearchPage() {
   const [searchInput, setSearchInput] = useState("");
@@ -35,6 +37,7 @@ export default function SearchPage() {
         <button className="btn btn-primary" onClick={searchBtnOnClick}>
           Search
         </button>
+        
       </div>
     </div>
   );
